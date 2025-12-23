@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: $text-color;
+}
+
+.container {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 7rem 0;
+
+  &-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 3.5rem;
+    color: $primary-dark;
+  }
+}
+
+.header {
+  background-color: $white;
+  box-shadow: $shadow-sm;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: $primary;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+
+    &:hover {
+      color: $primary-dark;
+    }
+  }
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2.2rem;
+
+  &__link {
+    color: $gray-700;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: $transition;
+    position: relative;
+
+    &:hover,
+    &:focus {
+      color: $primary;
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $primary;
+      transition: width $transition;
+    }
+
+    &--btn {
+      @extend .btn;
+      @extend .btn--primary;
+      padding: 0.7rem 1.4rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+.section {
+  padding: 8rem 0;
+
+  &-title {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: $heading-color;
+    margin-bottom: 3.5rem;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background-color: $primary;
+      border-radius: $radius-sm;
+    }
+  }
+}
+
+.about {
+  background-color: $white;
+
+  &__content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__text {
+    margin-bottom: 3rem;
+  }
+
+  &__lead {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: $heading-color;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: $text-color;
+    margin-bottom: 1.6rem;
+  }
+
+  &__cta {
+    font-size: 1.2rem;
+    padding: 1rem 2.2rem;
+    margin-top: 2rem;
+  }
+}
