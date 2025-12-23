@@ -1,0 +1,41 @@
+.team-card {
+  background-color: $white;
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  transition: $transition;
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-lg;
+  }
+
+  &__image {
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+    background-color: $gray-200; // fallback color
+  }
+
+  &__name {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: $heading-color;
+    margin: 1.6rem 1.2rem 0.6rem;
+  }
+
+  &__position {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: $primary;
+    margin-bottom: 0.4rem;
+  }
+
+  &__specialty {
+    font-size: 1rem;
+    color: $gray-700;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+}
