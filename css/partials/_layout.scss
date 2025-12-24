@@ -169,3 +169,14 @@ body {
     margin-top: 2.5rem;
   }
 }
+
+.articles {
+  background-color: $white;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+}
