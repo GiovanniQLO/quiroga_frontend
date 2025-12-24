@@ -207,6 +207,32 @@ body {
   color: #f8941d;
 }
 
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(248, 148, 29, 0.2);
+  border-top: 5px solid #f8941d;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .btn, .nav-list__link--btn {
   display: inline-block;
   padding: 0.9rem 1.8rem;
@@ -500,30 +526,6 @@ body {
 .contact-form__submit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-/* Loading animation styles */
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 0;
-}
-
-.spinner {
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(248, 148, 29, 0.2);
-  border-top: 5px solid #f8941d;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 /*# sourceMappingURL=style.css.map */
