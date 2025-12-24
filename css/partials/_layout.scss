@@ -192,3 +192,49 @@ body {
     }
   }
 }
+
+.footer {
+  background-color: $gray-900;
+  color: $gray-300;
+  padding: 3rem 0 2.5rem;
+  font-size: 0.95rem;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  &__info {
+    p {
+      margin: 0.4rem 0;
+    }
+  }
+
+  &__copyright {
+    font-weight: 500;
+    color: $gray-100;
+  }
+
+  &__contact {
+    margin-top: 0.5rem;
+  }
+
+  &__legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  &__link {
+    color: $gray-300;
+    text-decoration: none;
+    transition: $transition;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
