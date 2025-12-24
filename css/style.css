@@ -313,13 +313,15 @@ body {
   margin-bottom: 1rem;
   line-height: 1.4;
 }
-.article-card__title:hover {
-  color: #f8941d;
-}
 .article-card__excerpt {
   font-size: 1rem;
   color: #6b7280;
   line-height: 1.6;
+}
+.article-card__read-more {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.4rem;
 }
 
 .victory-card {
@@ -347,7 +349,7 @@ body {
 .victory-card__title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111827;
+  color: #708cc7;
   margin-bottom: 1rem;
   line-height: 1.3;
 }
