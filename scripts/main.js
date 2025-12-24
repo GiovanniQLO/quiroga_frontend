@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   fetchTeamData();
   fetchArticlesData();
+  fetchSuccessStoriesData();
 });
 
 function fetchTeamData() {
@@ -224,6 +225,9 @@ function showLoadingAnimation(section) {
   } else if (section === "articles") {
     container = document.querySelector(".articles__grid");
     message = "Loading articles data...";
+  } else if (section === "success") {
+    container = document.querySelector(".victories__slider");
+    message = "Loading success stories...";
   } else {
     container = document.querySelector(".team__grid");
     message = "Loading team data...";
@@ -254,4 +258,126 @@ function displayErrorMessage(message) {
       teamGrid.appendChild(errorDiv);
     }
   }
+}
+
+function fetchSuccessStoriesData() {
+  showLoadingAnimation("success");
+
+  fetch('config.json')
+    .then(response => response.json())
+    .then(config => {
+      const apiUrl = `${config.apiBaseUrl}/api/success`;
+      return new Promise(resolve => {
+        setTimeout(() => {
+          fetch(apiUrl)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then(successStoriesData => {
+              displaySuccessStoriesData(successStoriesData);
+              resolve(successStoriesData);
+            })
+            .catch(error => {
+              console.error("Error fetching success stories data:", error);
+              useMockSuccessStoriesData();
+              resolve(null);
+            });
+        }, 5000);
+      });
+    })
+    .catch(error => {
+      console.warn('Could not load config.json, using default API URL:', error);
+      useMockSuccessStoriesData();
+    });
+}
+
+function useMockSuccessStoriesData() {
+  const mockSuccessStoriesData = [
+    {
+      id: "1",
+      title: "Asylum Granted",
+      clientName: "A.M.",
+      caseType: "Political Persecution Asylum – Full Approval",
+      story: "Successfully obtained asylum for a client facing political persecution in their home country. After thorough preparation of the case and evidence of past persecution, the client was granted asylum, allowing them to remain in the U.S. and eventually apply for permanent residency.",
+      date: "2025-09-15"
+    },
+    {
+      id: "2",
+      title: "Removal Proceedings Terminated",
+      clientName: "J.R.",
+      caseType: "Cancellation of Removal – Approved",
+      story: "Our client was in removal proceedings but qualified for cancellation of removal. We demonstrated that the client had been physically present in the U.S. for more than 10 years, had good moral character, and that their removal would cause exceptional and extremely unusual hardship to their U.S. citizen family members.",
+      date: "2025-07-22"
+    },
+    {
+      id: "3",
+      title: "Green Card Approved",
+      clientName: "M.S.",
+      caseType: "Marriage-Based Adjustment of Status – Successful",
+      story: "Successfully guided a client through the marriage-based adjustment of status process. The case involved an I-130 petition and I-485 application for adjustment of status. Despite potential issues with the client's previous immigration history, we were able to demonstrate eligibility and obtain approval for the green card.",
+      date: "2025-11-10"
+    }
+  ];
+
+  displaySuccessStoriesData(mockSuccessStoriesData);
+}
+
+function displaySuccessStoriesData(successStories) {
+  const victoriesSlider = document.querySelector(".victories__slider");
+
+  if (!victoriesSlider) {
+    console.error("Victories slider container not found");
+    return;
+  }
+
+  victoriesSlider.innerHTML = "";
+
+  successStories.forEach(story => {
+    const victoryCard = createVictoryCard(story);
+    victoriesSlider.appendChild(victoryCard);
+  });
+}
+
+function createVictoryCard(story) {
+  const victoryCard = document.createElement("div");
+  victoryCard.className = "victory-card";
+
+  const date = new Date(story.date);
+  const formattedDate = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long'
+  });
+
+  victoryCard.innerHTML = `
+    <div class="victory-card__content">
+      <div class="victory-card__left">
+        <div class="victory-card__result">${story.title}</div>
+        <h3 class="victory-card__title">${story.caseType}</h3>
+        <p class="victory-card__client">Client: ${story.clientName}</p>
+        <time datetime="${story.date}" class="victory-card__date">${formattedDate}</time>
+        <div class="victory-card__story" style="display: none;">${story.story}</div>
+        <button class="victory-card__toggle-btn">+</button>
+      </div>
+      <div class="victory-card__right">
+      </div>
+    </div>
+  `;
+
+  const toggleBtn = victoryCard.querySelector('.victory-card__toggle-btn');
+  const storyEl = victoryCard.querySelector('.victory-card__story');
+
+  toggleBtn.addEventListener('click', function() {
+    if (storyEl.style.display === 'none') {
+      storyEl.style.display = 'block';
+      toggleBtn.textContent = '-';
+    } else {
+      storyEl.style.display = 'none';
+      toggleBtn.textContent = '+';
+    }
+  });
+
+  return victoryCard;
 }

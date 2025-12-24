@@ -174,22 +174,10 @@ body {
   background-color: $gray-50;
 
   &__slider {
-    display: flex;
-    overflow-x: auto;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
     padding: 1rem 0;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-
-    &::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: $primary;
-      border-radius: $radius-full;
-    }
   }
 }
 
@@ -245,6 +233,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 3rem 0;
+  width: 100%;
 }
 
 .spinner {
@@ -260,4 +249,12 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.victories .loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  width: 100%;
 }
