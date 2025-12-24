@@ -232,6 +232,18 @@ body {
   width: 100%;
 }
 
+.error-message {
+  color: #e53e3e;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: 1px solid #e53e3e;
+  border-radius: 8px;
+  background-color: #fef2f2;
+  margin: 1rem;
+}
+
 .btn, .nav-list__link--btn {
   display: inline-block;
   padding: 0.9rem 1.8rem;

@@ -26,7 +26,7 @@ function fetchTeamData() {
             })
             .catch((error) => {
               console.error("Error fetching team data:", error);
-              useMockData();
+              displayErrorMessage('Failed to load team data. Please try again later.', 'team');
               resolve(null);
             });
         }, 5000);
@@ -34,7 +34,7 @@ function fetchTeamData() {
     })
     .catch((error) => {
       console.warn("Could not load config.json, using default API URL:", error);
-      useMockData();
+      displayErrorMessage('Failed to load configuration. Please try again later.', 'team');
     });
 }
 
@@ -88,7 +88,7 @@ function fetchArticlesData() {
             })
             .catch((error) => {
               console.error("Error fetching articles data:", error);
-              useMockArticlesData();
+              displayErrorMessage('Failed to load articles. Please try again later.', 'articles');
               resolve(null);
             });
         }, 5000);
@@ -96,7 +96,7 @@ function fetchArticlesData() {
     })
     .catch((error) => {
       console.warn("Could not load config.json, using default API URL:", error);
-      useMockArticlesData();
+      displayErrorMessage('Failed to load configuration. Please try again later.', 'articles');
     });
 }
 
@@ -243,20 +243,26 @@ function showLoadingAnimation(section) {
   }
 }
 
-function displayErrorMessage(message) {
-  const teamSection = document.querySelector("#team");
-  if (teamSection) {
+function displayErrorMessage(message, section) {
+  let container;
+
+  if (section === 'team') {
+    container = document.querySelector(".team__grid");
+  } else if (section === 'articles') {
+    container = document.querySelector(".articles__grid");
+  } else if (section === 'success') {
+    container = document.querySelector(".victories__slider");
+  } else {
+    container = document.querySelector(".team__grid");
+  }
+
+  if (container) {
     const errorDiv = document.createElement("div");
-    errorDiv.style.color = "red";
-    errorDiv.style.textAlign = "center";
-    errorDiv.style.padding = "20px";
+    errorDiv.className = "error-message";
     errorDiv.textContent = message;
 
-    const teamGrid = teamSection.querySelector(".team__grid");
-    if (teamGrid) {
-      teamGrid.innerHTML = "";
-      teamGrid.appendChild(errorDiv);
-    }
+    container.innerHTML = "";
+    container.appendChild(errorDiv);
   }
 }
 
@@ -282,7 +288,7 @@ function fetchSuccessStoriesData() {
             })
             .catch(error => {
               console.error("Error fetching success stories data:", error);
-              useMockSuccessStoriesData();
+              displayErrorMessage('Failed to load success stories. Please try again later.', 'success');
               resolve(null);
             });
         }, 5000);
@@ -290,7 +296,7 @@ function fetchSuccessStoriesData() {
     })
     .catch(error => {
       console.warn('Could not load config.json, using default API URL:', error);
-      useMockSuccessStoriesData();
+      displayErrorMessage('Failed to load configuration. Please try again later.', 'success');
     });
 }
 
