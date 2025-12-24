@@ -2,6 +2,33 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchTeamData();
   fetchArticlesData();
   fetchSuccessStoriesData();
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const navList = document.querySelector('.nav-list');
+
+  if (navToggle && navList) {
+    navToggle.addEventListener('click', function() {
+      navList.classList.toggle('active');
+
+      this.classList.toggle('active');
+    });
+
+    const navLinks = document.querySelectorAll('.nav-list__link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('active');
+        navToggle.classList.remove('active');
+      });
+    });
+
+    document.addEventListener('click', function(event) {
+      const isClickInsideNav = navToggle.contains(event.target) || navList.contains(event.target);
+      if (!isClickInsideNav && navList.classList.contains('active')) {
+        navList.classList.remove('active');
+        navToggle.classList.remove('active');
+      }
+    });
+  }
 });
 
 function fetchTeamData() {
@@ -12,7 +39,6 @@ function fetchTeamData() {
     .then((config) => {
       const apiUrl = `${config.apiBaseUrl}/api/team`;
       return new Promise((resolve) => {
-        setTimeout(() => {
           fetch(apiUrl)
             .then((response) => {
               if (!response.ok) {
@@ -29,7 +55,6 @@ function fetchTeamData() {
               displayErrorMessage('We couldn\'t load the team information at the moment. Please refresh the page or try again later.', 'team');
               resolve(null);
             });
-        }, 3000);
       });
     })
     .catch((error) => {
@@ -74,7 +99,6 @@ function fetchArticlesData() {
     .then((config) => {
       const apiUrl = `${config.apiBaseUrl}/api/articles`;
       return new Promise((resolve) => {
-        setTimeout(() => {
           fetch(apiUrl)
             .then((response) => {
               if (!response.ok) {
@@ -91,7 +115,6 @@ function fetchArticlesData() {
               displayErrorMessage('We couldn\'t load the articles at the moment. Please refresh the page or try again later.', 'articles');
               resolve(null);
             });
-        }, 3000);
       });
     })
     .catch((error) => {
@@ -274,7 +297,6 @@ function fetchSuccessStoriesData() {
     .then(config => {
       const apiUrl = `${config.apiBaseUrl}/api/success`;
       return new Promise(resolve => {
-        setTimeout(() => {
           fetch(apiUrl)
             .then(response => {
               if (!response.ok) {
@@ -291,7 +313,6 @@ function fetchSuccessStoriesData() {
               displayErrorMessage('We couldn\'t load the success stories at the moment. Please refresh the page or try again later.', 'success');
               resolve(null);
             });
-        }, 3000);
       });
     })
     .catch(error => {

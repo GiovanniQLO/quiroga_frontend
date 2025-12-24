@@ -287,6 +287,189 @@ body {
   white-space: pre-line;
 }
 
+@media screen and (max-width: 768px) {
+  .header__container {
+    flex-wrap: wrap;
+  }
+  .header__logo {
+    font-size: 1.5rem;
+    flex-basis: auto;
+    margin-right: auto;
+  }
+}
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #374151;
+  transition: all 0.3s ease;
+  transform-origin: left;
+  border-radius: 2px;
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+@media screen and (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-list {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 4rem;
+    transition: all 0.5s ease;
+    gap: 2.5rem;
+  }
+  .nav-list.active {
+    left: 0;
+  }
+  .nav-list__link {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .section-title,
+  .hero__title {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
+  .section-title::after,
+  .hero__title::after {
+    width: 70px;
+    height: 3px;
+    bottom: -0.8rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .about__content {
+    padding: 0 1.5rem;
+  }
+  .about__lead {
+    font-size: 1.2rem;
+  }
+  .about p {
+    font-size: 1rem;
+  }
+  .about__cta {
+    font-size: 1.1rem;
+    padding: 0.9rem 1.8rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .team__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+  .team-card__image {
+    height: 250px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .articles__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+  .article-card__image {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .victories__slider {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem 1.5rem;
+  }
+  .victory-card__content {
+    text-align: center;
+  }
+  .victory-card__left {
+    margin-bottom: 0.5rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .footer__container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .footer__legal-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .hero {
+    padding-top: 8rem !important;
+    padding-bottom: 10rem !important;
+  }
+  .hero__title {
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+    margin-bottom: 1.5rem;
+  }
+  .hero__description {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    margin: 0 auto 2rem;
+  }
+  .hero__actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .hero__actions .btn,
+  .hero__actions .nav-list__link--btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem 1.8rem;
+    font-size: 1.1rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .contact {
+    padding: 4rem 0 2rem;
+  }
+  .contact__container {
+    padding: 0 1.5rem;
+  }
+  .contact__form-wrapper {
+    padding: 2rem 1.5rem;
+  }
+  .contact-form__submit {
+    align-self: stretch;
+    width: 100%;
+  }
+}
 .btn, .nav-list__link--btn {
   display: inline-block;
   padding: 0.9rem 1.8rem;

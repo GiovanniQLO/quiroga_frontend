@@ -1,23 +1,50 @@
 document.addEventListener('DOMContentLoaded', function() {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navList = document.querySelector('.nav-list');
+
+  if (navToggle && navList) {
+    navToggle.addEventListener('click', function() {
+      navList.classList.toggle('active');
+
+      this.classList.toggle('active');
+    });
+
+    const navLinks = document.querySelectorAll('.nav-list__link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navList.classList.remove('active');
+        navToggle.classList.remove('active');
+      });
+    });
+
+    document.addEventListener('click', function(event) {
+      const isClickInsideNav = navToggle.contains(event.target) || navList.contains(event.target);
+      if (!isClickInsideNav && navList.classList.contains('active')) {
+        navList.classList.remove('active');
+        navToggle.classList.remove('active');
+      }
+    });
+  }
+
   const contactForm = document.querySelector('.contact-form');
-  
+
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      
+
       const nameInput = document.getElementById('name');
       const emailInput = document.getElementById('email');
       const messageInput = document.getElementById('message');
-      
+
       resetErrors();
-      
+
       let isValid = true;
-      
+
       if (!nameInput.value.trim()) {
         showError(nameInput, 'Name is required');
         isValid = false;
       }
-      
+
       if (!emailInput.value.trim()) {
         showError(emailInput, 'Email is required');
         isValid = false;
@@ -25,12 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
         showError(emailInput, 'Please enter a valid email address');
         isValid = false;
       }
-      
+
       if (!messageInput.value.trim()) {
         showError(messageInput, 'Message is required');
         isValid = false;
       }
-      
+
       if (isValid) {
         submitForm(nameInput.value.trim(), emailInput.value.trim(), messageInput.value.trim());
       }
