@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Law & Justice</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__container">
+        <a href="../" class="header__logo"> Law & Justice </a>
+
+        <nav class="header__navbar">
+          <ul class="nav-list">
+            <li><a href="../" class="nav-list__link">Home</a></li>
+            <li><a href="../#about" class="nav-list__link">About</a></li>
+            <li><a href="../#team" class="nav-list__link">Team</a></li>
+            <li><a href="../#articles" class="nav-list__link">Articles</a></li>
+            <li><a href="../#victories" class="nav-list__link">Victories</a></li>
+            <li>
+              <a href="../pages/contact.html" class="nav-list__link nav-list--btn">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
+    <section class="contact section">
+      <div class="container contact__container">
+        <h2 class="section-title">Contact Us</h2>
+        
+        <div class="contact__form-wrapper">
+          <form class="contact-form" action="#" method="POST">
+            <div class="contact-form__group">
+              <label for="name" class="contact-form__label">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="contact-form__input" 
+                required
+              />
+            </div>
+            
+            <div class="contact-form__group">
+              <label for="email" class="contact-form__label">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="contact-form__input" 
+                required
+              />
+            </div>
+            
+            <div class="contact-form__group">
+              <label for="message" class="contact-form__label">Message</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                class="contact-form__textarea" 
+                rows="6" 
+                required
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn--primary contact-form__submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+    
+    <footer class="footer">
+      <div class="container footer__container">
+        <div class="footer__info">
+          <p class="footer__copyright">
+            &copy; 2025 Law & Justice. All rights reserved.
+          </p>
+          <p class="footer__contact">
+            123 Somewhere, Suite number • Downtown • (555) 123-4567
+          </p>
+        </div>
+
+        <div class="footer__legal-links">
+          <a href="#" class="footer__link">Privacy Policy</a>
+          <a href="#" class="footer__link">Terms of Use</a>
+          <a href="#" class="footer__link">Attorney Advertising</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../scripts/contact-form.js"></script>
+  </body>
+</html>

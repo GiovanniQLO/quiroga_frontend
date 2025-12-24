@@ -1,0 +1,82 @@
+.contact {
+  background-color: $gray-50;
+  padding: 6rem 0;
+
+  &__container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  &__form-wrapper {
+    background-color: $white;
+    padding: 3rem;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  &__label {
+    font-weight: 600;
+    color: $text-color;
+    font-size: 1.1rem;
+  }
+
+  &__input,
+  &__textarea {
+    padding: 0.9rem 1.2rem;
+    border: 2px solid $gray-200;
+    border-radius: $radius-md;
+    font-size: 1rem;
+    transition: $transition;
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.2);
+    }
+
+    &--error {
+      border-color: #e53e3e;
+
+      &:focus {
+        border-color: #e53e3e;
+        box-shadow: 0 0 0 3px rgba(#e53e3e, 0.2);
+      }
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+
+  &__error-message {
+    color: #e53e3e;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+  }
+
+  &__submit {
+    align-self: flex-start;
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
