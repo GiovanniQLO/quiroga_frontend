@@ -26,15 +26,15 @@ function fetchTeamData() {
             })
             .catch((error) => {
               console.error("Error fetching team data:", error);
-              displayErrorMessage('Failed to load team data. Please try again later.', 'team');
+              displayErrorMessage('We couldn\'t load the team information at the moment. Please refresh the page or try again later.', 'team');
               resolve(null);
             });
-        }, 5000);
+        }, 3000);
       });
     })
     .catch((error) => {
       console.warn("Could not load config.json, using default API URL:", error);
-      displayErrorMessage('Failed to load configuration. Please try again later.', 'team');
+      displayErrorMessage('We couldn\'t load the configuration at the moment. Please refresh the page or try again later.', 'team');
     });
 }
 
@@ -88,15 +88,15 @@ function fetchArticlesData() {
             })
             .catch((error) => {
               console.error("Error fetching articles data:", error);
-              displayErrorMessage('Failed to load articles. Please try again later.', 'articles');
+              displayErrorMessage('We couldn\'t load the articles at the moment. Please refresh the page or try again later.', 'articles');
               resolve(null);
             });
-        }, 5000);
+        }, 3000);
       });
     })
     .catch((error) => {
       console.warn("Could not load config.json, using default API URL:", error);
-      displayErrorMessage('Failed to load configuration. Please try again later.', 'articles');
+      displayErrorMessage('We couldn\'t load the configuration at the moment. Please refresh the page or try again later.', 'articles');
     });
 }
 
@@ -171,7 +171,7 @@ function createArticleCard(article) {
       <time datetime="${dateISO}" class="article-card__date">${formattedDate}</time>
       <h3 class="article-card__title">${article.title}</h3>
       <p class="article-card__summary">${article.summary}</p>
-      <a href="#" class="btn btn--primary article-card__read-more">
+      <a href="./pages/article.html?slug=${article.slug}" class="btn btn--primary article-card__read-more">
         Read more →
       </a>
     </div>
@@ -288,15 +288,15 @@ function fetchSuccessStoriesData() {
             })
             .catch(error => {
               console.error("Error fetching success stories data:", error);
-              displayErrorMessage('Failed to load success stories. Please try again later.', 'success');
+              displayErrorMessage('We couldn\'t load the success stories at the moment. Please refresh the page or try again later.', 'success');
               resolve(null);
             });
-        }, 5000);
+        }, 3000);
       });
     })
     .catch(error => {
       console.warn('Could not load config.json, using default API URL:', error);
-      displayErrorMessage('Failed to load configuration. Please try again later.', 'success');
+      displayErrorMessage('We couldn\'t load the configuration at the moment. Please refresh the page or try again later.', 'success');
     });
 }
 

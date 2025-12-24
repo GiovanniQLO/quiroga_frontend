@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="article-title">Article - Law & Justice</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__container">
+        <a href="/" class="header__logo"> Law & Justice </a>
+
+        <nav class="header__navbar">
+          <ul class="nav-list">
+            <li><a href="../index.html" class="nav-list__link">Home</a></li>
+            <li><a href="../index.html#about" class="nav-list__link">About</a></li>
+            <li><a href="../index.html#team" class="nav-list__link">Team</a></li>
+            <li><a href="../index.html#articles" class="nav-list__link">Articles</a></li>
+            <li><a href="../index.html#victories" class="nav-list__link">Victories</a></li>
+            <li>
+              <a href="../pages/contact.html" class="nav-list__link nav-list--btn">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
+    <section class="article-detail section">
+      <div class="container">
+        <article class="article-content">
+          <header class="article-header">
+            <h1 class="article-title" id="article-title-content">Loading article...</h1>
+            <time class="article-date" id="article-date">Loading date...</time>
+          </header>
+          <div class="article-body">
+            <div id="article-content" class="content-text">Loading content...</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <div class="container footer__container">
+        <div class="footer__info">
+          <p class="footer__copyright">
+            &copy; 2025 Law & Justice. All rights reserved.
+          </p>
+          <p class="footer__contact">
+            123 Somewhere, Suite number • Downtown • (555) 123-4567
+          </p>
+        </div>
+
+        <div class="footer__legal-links">
+          <a href="#" class="footer__link">Privacy Policy</a>
+          <a href="#" class="footer__link">Terms of Use</a>
+          <a href="#" class="footer__link">Attorney Advertising</a>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="../scripts/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleSlug = urlParams.get('slug');
+
+        if (articleSlug) {
+          fetchArticleBySlug(articleSlug);
+        } else {
+          document.getElementById('article-content').innerHTML =
+            '<div class="error-message">Article not found. Please go back to the articles page.</div>';
+        }
+      });
+
+      async function fetchArticleBySlug(articleSlug) {
+        try {
+          const configResponse = await fetch("../config.json");
+          const config = await configResponse.json();
+          const apiUrl = `${config.apiBaseUrl}/api/articles/slug/${articleSlug}`;
+
+          const response = await fetch(apiUrl);
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const article = await response.json();
+
+          displayArticle(article);
+        } catch (error) {
+          console.error("Error fetching article:", error);
+          document.getElementById('article-content').innerHTML =
+            '<div class="error-message">We couldn\'t load this article at the moment. Please go back to the articles page.</div>';
+        }
+      }
+      
+      function displayArticle(article) {
+        document.getElementById('article-title').textContent = `${article.title} - Law & Justice`;
+        document.getElementById('article-title-content').textContent = article.title;
+
+        const date = new Date(article.publishedAt);
+        const formattedDate = date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        document.getElementById('article-date').textContent = formattedDate;
+
+        document.getElementById('article-content').textContent = article.content;
+      }
+    </script>
+  </body>
+</html>

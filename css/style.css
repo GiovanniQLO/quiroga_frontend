@@ -233,15 +233,58 @@ body {
 }
 
 .error-message {
-  color: #e53e3e;
+  color: #374151;
   text-align: center;
   padding: 2rem;
   font-size: 1.1rem;
   font-weight: 500;
-  border: 1px solid #e53e3e;
+  border: 1px solid #ffab4d;
   border-radius: 8px;
-  background-color: #fef2f2;
+  background-color: #f3f4f6;
   margin: 1rem;
+}
+
+.article-detail {
+  background-color: #ffffff;
+  padding: 6rem 0;
+}
+.article-detail .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.article-detail .article-content {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  margin-bottom: 3rem;
+}
+.article-detail .article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.article-detail .article-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+.article-detail .article-date {
+  font-size: 1rem;
+  color: #f8941d;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 1rem;
+}
+.article-detail .article-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #1f2937;
+}
+.article-detail .content-text {
+  white-space: pre-line;
 }
 
 .btn, .nav-list__link--btn {
